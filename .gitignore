@@ -1,20 +1,136 @@
-vendor/
+# My additions #
+################
+/public/assets/images/uploads/
+
+
+# User specific & automatically generated files #
+#################################################
+/app/Config/database.php
+/app/tmp
+/lib/Cake/Console/Templates/skel/tmp/
+/plugins
+/Plugin
+/build
+/dist
+/tags
+*.mo
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+
+### NetBeans ###
+################
+*/nbproject
+*.project
+/nbproject/
+nbproject/private/
+build/
+report/
+nbbuild/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+project.xml
+project.properties
+
+### Eclipse ###
+###############
+*.pydevproject
+.metadata
+.gradle
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+
+### PHP-STORM ###
+#################
+.idea
+/.idea/
+/.idea
+
+### External tool builders ###
+##############################
+.externalToolBuilders/
+
+### Locally stored "Eclipse launch configurations" ###
+######################################################
+*.launch
+
+### CDT-specific ###
+####################
+.cproject
+
+### PDT-specific ###
+####################
+.buildpath
+
+### sbteclipse plugin ###
+#########################
+.target
+
+### TeXlipse plugin ###
+#######################
+.texlipse
+
+### Composer ###
+################
+composer.phar
+/vendors
+/vendor
+/vendor/*
+### Commit your application's lock file http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file ###
+### You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file ###
+composer.lock
+composer\.lock
+*.lock
+
+### Node ###
+############
+/node_modules
 node_modules/
 npm-debug.log
+package-lock.json
 
-# Laravel 4 specific
+### Bower ###
+#############
+/bower_components/
+
+### Laravel 4 specific ###
+##########################
 bootstrap/compiled.php
 app/storage/
 
-# Laravel 5 & Lumen specific
+### Laravel 5 specific ###
+##########################
+/public/storage
 public/storage
 public/hot
 storage/*.key
+Homestead.json
+Homestead.yaml
 .env.*.php
 .env.php
 .env
-Homestead.yaml
-Homestead.json
 
-# Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
+### Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer ###
 .rocketeer/
+
+### CakePhp ###
+###############
+/app/webroot/uploads
+/app/webroot/img/uploads
+/app/webroot/logs/
