@@ -2,9 +2,11 @@
 
 @section('content')
     <div class="ibox-content">
-        <a href="{{route('aluno.create')}}">Cadastrar</a>
+        <a href="{{route('aluno.create')}}">
+            <button type="button" class="btn btn-warning">Cadastrar</button>
+        </a>
 
-        <table class="table">
+        <table class="table table-bordered">
             <thead>
             <tr>
                 <th>#id</th>
@@ -20,7 +22,11 @@
                     <td>{{$aluno->id}}</td>
                     <td>{{$aluno->nome}}</td>
                     <td>{{$aluno->created_at->format('d/m/Y h:i')}}</td>
-                    <td><a href="{{route('aluno.edit', ['id' => $aluno->id])}}">Editar</a></td>
+                    <td>
+                        <a href="{{route('aluno.edit', ['id' => $aluno->id])}}">
+                            <i class="fas fa-edit fa-2x"></i>
+                        </a>
+                    </td>
                 </tr>
             @empty
                 <tr>

@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title> @yield('title') </title>
 
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('components/toastr/toastr.min.css')}}">
     @stack('css')
 
 </head>
@@ -15,20 +17,17 @@
 <!-- Wrapper-->
 <div id="wrapper">
 
-    @yield('sidebar')
+@yield('sidebar')
 
-    <!-- Page wraper -->
-    <div id="page-wrapper">
-        <!-- Main view  -->
-        <div class="conteudo">
-            @yield('content')
-        </div>
+<!-- Main view  -->
+    <div class="container">
+        @yield('content')
     </div>
     <!-- End page wrapper-->
 
     <footer>
         <div class="footer">
-            <div class="pull-right">
+            <div class="text-center">
                 <strong>Copyright</strong> Softcom Tecnologia &copy; 2018
             </div>
         </div>
@@ -37,6 +36,10 @@
 </div>
 <!-- End wrapper-->
 
+<script src="{{asset('js/jquery-3.1.1.min.js')}}"></script>
+<script src="{{asset('js/bootstrap.min.js')}}"></script>
+<script src="{{asset('components/fontawesome/js/all.js')}}"></script>
+<script src="{{asset('components/toastr/toastr.min.js')}}"></script>
 @stack('scripts')
 
 </body>

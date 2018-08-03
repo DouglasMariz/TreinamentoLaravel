@@ -89,7 +89,9 @@ class AlunoController extends Controller
         $this->validate(
             $request,
             ['nome' => 'required'],
-            ['required' => 'O :attribute é Obrigatório'],
+//Comentada esta linha porque foi adicionado o arquivo validation.php de validação padrão do laravel. resources/lang/pt-br/validation.php
+//            ['required' => 'O :attribute é Obrigatório'],
+            [],
             ['nome' => 'Nome do Aluno']
         );
         $aluno->update($request->all());

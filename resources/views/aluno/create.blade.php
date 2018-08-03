@@ -5,13 +5,23 @@
         {{--        {!! csrf_field() !!}--}}
         @csrf
 
-        <label for="aluno">Nome do Aluno</label>
-        <div class="has-feedback {{ $errors->has("nome") ? 'has-error' : '' }}">
-            <input type="text" name="nome">
-            {!!  $errors->first("nome", '<span class="help-block"><strong>:message</strong></span>') !!}
+        <div class="col-md-6">
+            <div class="form-group has-feedback {{ $errors->has("nome") ? 'has-error' : '' }}">
+                <label for="nome">Nome do aluno</label>
+                <input type="nome" class="form-control" id="nome" placeholder="nome" value="{{old('nome')}}">
+                {!!  $errors->first("nome", '<span class="help-block"><strong>:message</strong></span>') !!}
+            </div>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            <a class="btn btn-default" href="{{ URL::previous() }}">
+                Voltar
+            </a>
+            <a class="btn btn-default" href="{{ url()->route('aluno.index') }}">
+                Voltar
+            </a>
         </div>
 
-        <button type="submit">Salvar</button>
+    </form>
+
     </form>
 @endsection
 
