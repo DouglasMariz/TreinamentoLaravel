@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Aluno;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class AlunoController extends Controller
 {
@@ -15,7 +17,13 @@ class AlunoController extends Controller
     public function index()
     {
         $alunosModel = Aluno::all();
-        return view('aluno.index', compact('alunosModel'));
+        return view('exemplo.aluno.index', compact('alunosModel'));
+    }
+
+    public function inativos()
+    {
+        $alunosModel = Aluno::onlyTrashed()->get();
+        return view('exemplo.aluno.inativo', compact('alunosModel'));
     }
 
     /**
@@ -25,7 +33,7 @@ class AlunoController extends Controller
      */
     public function create()
     {
-        return view('aluno.create', []);
+        return view('exemplo.aluno.create', []);
     }
 
     /**
@@ -44,12 +52,14 @@ class AlunoController extends Controller
             ['nome' => 'Nome do Aluno']
         );
 
-        /*Salval instanciando o objeto*/
-//        $alunoModel = new Aluno();
-//        $alunoModel->fill($request->all());
-//        $alunoModel->save();
-        /*Salvar com método estaticos sem precisar instanciar*/
-        Aluno::create($request->all());
+        try {
+            DB::transaction(function() use ($request) {
+                Aluno::create($request->all());
+            });
+        } catch (\Exception $e) {
+            dd($e);
+        }
+
         return redirect('aluno');
 
     }
@@ -73,7 +83,7 @@ class AlunoController extends Controller
      */
     public function edit(Aluno $aluno)
     {
-        return view('aluno.edit', compact('aluno'));
+        return view('exemplo.aluno.edit', compact('aluno'));
     }
 
     /**
@@ -106,6 +116,14 @@ class AlunoController extends Controller
      */
     public function destroy(Aluno $aluno)
     {
-        //
+        $aluno->delete();
+        return redirect()->back();
+    }
+
+    public function restore($id)
+    {
+        $aluno = Aluno::withTrashed()->find($id);
+        $aluno->restore();
+        return redirect()->back();
     }
 }
