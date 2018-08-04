@@ -23,18 +23,10 @@
                     <td>{{$aluno->nome}}</td>
                     <td>{{$aluno->created_at->format('d/m/Y h:i')}}</td>
                     <td>
-                        <a href="{{route('aluno.edit', ['id' => $aluno->id])}}">
-                            <i class="fas fa-edit fa-2x"></i>
+                        <a href="{{route('restore', ['id' => $aluno->id])}}">
+                            Ativar
                         </a>
 
-                        <form action="{{route('aluno.destroy', $aluno->id)}}" method="POST">
-                            @csrf
-                            @method('DELETE')
-
-                            <button type="submit">
-                                <i class="fas fa-trash fa-2x"></i>
-                            </button>
-                        </form>
                     </td>
                 </tr>
             @empty

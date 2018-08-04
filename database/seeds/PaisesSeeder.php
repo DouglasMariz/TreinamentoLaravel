@@ -25,14 +25,14 @@ class PaisesSeeder extends Seeder
         ]);
 
         /*Forma 2*/
-//        Paises::Create(['nome' => 'Brasil']);
-//        Paises::Create(['nome' => 'Portugal']);
+        Paises::create(['nome' => 'Brasil']);
+        Paises::create(['nome' => 'Portugal']);
 
         /*Forma 3*/
-//        $json = File::get(__DIR__ . '/json/paises.json');
-//        $paises = json_decode($json, true);
-//        foreach ($paises as $pais) {
-//            Paises::create($pais);
-//        }
+        $json = File::get(__DIR__ . '/json/paises.json');
+        $paises = json_decode($json, true);
+        foreach ($paises as $pais) {
+            Paises::create($pais);
+        }
     }
 }
