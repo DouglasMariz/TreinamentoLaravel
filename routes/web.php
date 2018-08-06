@@ -18,3 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::prefix('admin')->middleware('termos')->group(function() {
+    Route::get('aluno/inativos', 'AlunoController@inativos');
+    Route::get('aluno/{id}/restore', 'AlunoController@restore')->name('restore');
+    Route::resource('aluno', 'AlunoController');
+});

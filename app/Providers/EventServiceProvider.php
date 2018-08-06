@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Events\AlunoCadastrado;
+use App\Listeners\EmailAlunoCadastrado;
+use App\Listeners\NotificacaoAlunoCadastrado;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -13,8 +16,9 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\Event' => [
-            'App\Listeners\EventListener',
+        AlunoCadastrado::class => [
+            NotificacaoAlunoCadastrado::class,
+            EmailAlunoCadastrado::class
         ],
     ];
 

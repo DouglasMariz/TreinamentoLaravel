@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Aluno;
+use App\Events\AlunoCadastrado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Gate;
 
 class AlunoController extends Controller
@@ -53,14 +55,19 @@ class AlunoController extends Controller
         );
 
         try {
+
             DB::transaction(function() use ($request) {
                 Aluno::create($request->all());
             });
+
+            event(new AlunoCadastrado());
+//            Event::fire('AlunoCadastrado');
+
         } catch (\Exception $e) {
             dd($e);
         }
 
-        return redirect('aluno');
+        return redirect()->route('aluno.index');
 
     }
 
@@ -95,6 +102,11 @@ class AlunoController extends Controller
      */
     public function update(Request $request, Aluno $aluno)
     {
+
+//        $this->authorize('aluno_update', $aluno);
+        if(Gate::denies('aluno_update', $aluno)) {
+            dd('não permitido');
+        }
         /*Validator*/
         $this->validate(
             $request,
@@ -105,7 +117,7 @@ class AlunoController extends Controller
             ['nome' => 'Nome do Aluno']
         );
         $aluno->update($request->all());
-        return redirect('aluno');
+        return redirect()->route('aluno.index');
     }
 
     /**

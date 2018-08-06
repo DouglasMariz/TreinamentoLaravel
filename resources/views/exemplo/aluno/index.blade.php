@@ -23,9 +23,16 @@
                     <td>{{$aluno->nome}}</td>
                     <td>{{$aluno->created_at->format('d/m/Y h:i')}}</td>
                     <td>
-                        {{ Form::open(['route' => ['aluno.destroy', $aluno->id], 'method' => 'DELETE', 'style' => 'display:inline']) }}
-                        {{Form::submit('Deletar')}}
-                        {{ Form::close() }}
+
+                        @can('aluno_update', $aluno)
+                            <a href="{{route('aluno.edit', ['id' => $aluno->id])}}">
+                                <i class="fas fa-edit fa-2x"></i>
+                            </a>
+
+                            {{ Form::open(['route' => ['aluno.destroy', $aluno->id], 'method' => 'DELETE', 'style' => 'display:inline']) }}
+                            {{Form::submit('Deletar')}}
+                            {{ Form::close() }}
+                        @endcan
                     </td>
                 </tr>
             @empty
